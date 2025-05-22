@@ -19,7 +19,10 @@ app.use(express.json());
 
 database();
 
-app.use(cors());
+app.use(cors({
+   origin: 'https://my-portfolio-sooty-iota-53.vercel.app/', 
+  credentials: true,
+}));
 app.use("/resumepost", resumepost);
 app.use("/resumeget", resumeget);
 
