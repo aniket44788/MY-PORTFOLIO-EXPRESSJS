@@ -1,8 +1,8 @@
 require("dotenv").config();
+const cors = require("cors");
 const express = require("express");
 const path = require("path");
 const resumepost = require("./Cruds/resumepost");
-const cors = require("cors");
 const database = require("./My Database/database");
 const resumeget = require("./Cruds/resumeget");
 const aboutpage = require("./Cruds/aboutpage");
@@ -19,9 +19,18 @@ app.use(express.json());
 
 database();
 
+const allowedOrigins = [
+  "https://my-portfolio-sooty-iota-53.vercel.app",
+];
 app.use(cors({
-   origin: 'https://my-portfolio-sooty-iota-53.vercel.app/', 
-  credentials: true,
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
 }));
 app.use("/resumepost", resumepost);
 app.use("/resumeget", resumeget);
