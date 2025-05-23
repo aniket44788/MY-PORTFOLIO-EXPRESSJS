@@ -20,8 +20,9 @@ app.use(express.json());
 database();
 
 const allowedOrigins = [
-  "https://my-portfolio-sooty-iota-53.vercel.app",
+  "https://my-portfolio-reactjs.onrender.com"
 ];
+
 app.use(cors({
   origin: function (origin, callback) {
     if (!origin || allowedOrigins.includes(origin)) {
@@ -32,6 +33,9 @@ app.use(cors({
   },
   credentials: true
 }));
+
+
+
 app.use("/resumepost", resumepost);
 app.use("/resumeget", resumeget);
 
