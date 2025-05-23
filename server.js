@@ -19,21 +19,10 @@ app.use(express.json());
 
 database();
 
-const allowedOrigins = [
-  "https://my-portfolio-reactjs.onrender.com"
-];
 
-app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error("Not allowed by CORS"));
-    }
-  },
-  credentials: true
-}));
+app.use(cors());
 
+app.use("/upload", express.static(path.join(__dirname, "/upload")));
 
 
 app.use("/resumepost", resumepost);
@@ -52,7 +41,6 @@ app.use("/projectget", projectget)
 app.use("/nodemailer" , nodemailer)
 
 
-app.use("/upload", express.static(path.join(__dirname, "upload")));
 
 app.listen(PORT, () => {
   console.log(`server is running at port ${PORT}`);

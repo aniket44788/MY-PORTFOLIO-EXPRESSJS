@@ -9,8 +9,8 @@ aboutpage.post("/", upload.single("myimage"), async (req, res) => {
     const { abouttitle, about } = req.body;
 
     const aboutUpdate = new aboutpageData({
-      myimage,
       abouttitle,
+      myimage,
       about,
     });
     const saveaboutupdate = await aboutUpdate.save();
@@ -24,6 +24,7 @@ aboutpage.post("/", upload.single("myimage"), async (req, res) => {
       message: "Failed to post data",
       error: error.message,
     });
+    
   }
 });
 

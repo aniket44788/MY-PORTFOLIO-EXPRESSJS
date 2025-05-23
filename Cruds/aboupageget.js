@@ -1,13 +1,10 @@
 const express = require("express");
 const aboutpageget = express.Router();
-const aboutpost = require("../Schemas/aboutpost")
+const aboutpageData = require("../Schemas/aboutpost")
 
 aboutpageget.get("/", async (req, res) => {
   try {
-
-        const fetchData = await aboutpost.find({})
-
-
+        const fetchData = await aboutpageData.find({})
     return res.status(200).json({
       message: "Data fetch successfully",
       result : fetchData
