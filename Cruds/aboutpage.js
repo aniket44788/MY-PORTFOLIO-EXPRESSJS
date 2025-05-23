@@ -8,15 +8,20 @@ aboutpage.post("/", upload.single("myimage"), async (req, res) => {
     const myimage = req.file.path;
     const { abouttitle, about } = req.body;
 
+    if (!myimage) {
+      return res.status(400).json({ message: "Image file is required" });
+    }
+
     const aboutUpdate = new aboutpageData({
       abouttitle,
       myimage,
       about,
     });
+
     const saveaboutupdate = await aboutUpdate.save();
 
     return res.status(201).json({
-      message: "Data post successfully",
+      message: "Data posted successfully",
       result: saveaboutupdate,
     });
   } catch (error) {
@@ -24,7 +29,6 @@ aboutpage.post("/", upload.single("myimage"), async (req, res) => {
       message: "Failed to post data",
       error: error.message,
     });
-    
   }
 });
 

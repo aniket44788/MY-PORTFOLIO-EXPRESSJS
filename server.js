@@ -21,7 +21,8 @@ database();
 
 app.use(cors());
 
-app.use("/upload", express.static(path.join(__dirname, "upload")));
+app.use("/uploads", express.static("uploads"));
+
 
 app.use("/resumepost", resumepost);
 app.use("/resumeget", resumeget);

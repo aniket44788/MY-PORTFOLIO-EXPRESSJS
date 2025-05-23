@@ -14,5 +14,5 @@ const aboutdata = mongoose.Schema({
     required: true,
   },
 });
-const aboutpageData = mongoose.model("aboutpagedata", aboutdata);
+const aboutpageData = mongoose.model("aboutpagedatas", aboutdata);
 module.exports = aboutpageData;
