@@ -19,28 +19,23 @@ app.use(express.json());
 
 database();
 
-
 app.use(cors());
 
-app.use("/upload", express.static(path.join(__dirname, "/upload")));
-
+app.use("/upload", express.static(path.join(__dirname, "upload")));
 
 app.use("/resumepost", resumepost);
 app.use("/resumeget", resumeget);
 
+app.use("/aboutupdate", aboutpage);
+app.use("/aboutpageget", aboutpageget);
 
-app.use("/aboutupdate" , aboutpage)
-app.use("/aboutpageget" , aboutpageget)
+app.use("/servicepost", servicepost);
+app.use("/serviceget", serviceget);
 
-app.use("/servicepost" , servicepost)
-app.use("/serviceget", serviceget)
+app.use("/projectpost", projectpost);
+app.use("/projectget", projectget);
 
-app.use("/projectpost", projectpost)
-app.use("/projectget", projectget)
-
-app.use("/nodemailer" , nodemailer)
-
-
+app.use("/nodemailer", nodemailer);
 
 app.listen(PORT, () => {
   console.log(`server is running at port ${PORT}`);
