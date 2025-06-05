@@ -13,6 +13,9 @@ const projectpost = require("./Cruds/My works/projectpost");
 const projectget = require("./Cruds/My works/projectget");
 const nodemailer = require("./Cruds/nodemailer");
 const projectdelete = require("./Cruds/My works/projectdelete");
+const projectupdate = require("./Cruds/My works/projectupdate");
+const signup = require("./Authentication/signup");
+const login = require("./Authentication/login");
 const app = express();
 const PORT = process.env.PORT;
 
@@ -37,8 +40,14 @@ app.use("/serviceget", serviceget);
 app.use("/projectpost", projectpost);
 app.use("/projectget", projectget);
 app.use("/projectdelete" , projectdelete)
+app.use("/projectupdate" , projectupdate)
 
-app.use("/nodemailer", nodemailer);
+
+
+app.use("/signup", signup)
+app.use("/login" , login)
+
+// app.use("/nodemailer", nodemailer);
 
 app.listen(PORT, () => {
   console.log(`server is running at port ${PORT}`);
