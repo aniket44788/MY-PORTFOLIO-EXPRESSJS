@@ -27,6 +27,10 @@ app.use(cors());
 
 app.use("/uploads", express.static("uploads"));
 
+app.get("/", (req, res) => {
+  res.send("Backend is live");
+});
+
 
 app.use("/resumepost", resumepost);
 app.use("/resumeget", resumeget);
@@ -47,7 +51,7 @@ app.use("/projectupdate" , projectupdate)
 app.use("/signup", signup)
 app.use("/login" , login)
 
-// app.use("/nodemailer", nodemailer);
+app.use("/nodemailer", nodemailer);
 
 app.listen(PORT, () => {
   console.log(`server is running at port ${PORT}`);
